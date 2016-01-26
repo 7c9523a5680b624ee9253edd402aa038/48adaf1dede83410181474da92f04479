@@ -1,0 +1,2 @@
+prunsrv //DS//TaskStart
+pause
