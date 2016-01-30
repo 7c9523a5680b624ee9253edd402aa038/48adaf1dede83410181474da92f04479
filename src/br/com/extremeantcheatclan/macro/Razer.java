@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import br.com.extremeantcheatclan.dao.server.impl.XitersDAOImpl;
 import br.com.extremeantcheatclan.layout.LayoutGenericXK;
@@ -30,7 +29,7 @@ public class Razer {
 		Date inicoVerificacao = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		
-		JOptionPane.showMessageDialog(null, "Entro aqui");
+		//JOptionPane.showMessageDialog(null, "Entro aqui");
 		
 		//Servico para escrever os screenShots
 		this.threadEscritaScreenShot();
@@ -44,13 +43,13 @@ public class Razer {
 				break;
 			}
 			
-			JOptionPane.showMessageDialog(null, "Nao acho");
+			//JOptionPane.showMessageDialog(null, "Nao acho");
 			
 			String processosAbertos = Util.executeComandoCMDReturn(Util.TASKLIST_RUNNING);
 			Util.timeOut(1000);
 			if(processosAbertos != null && !processosAbertos.isEmpty()){
 				if(!processosAbertos.contains(CheckMacros.subProcessMouse)){
-					JOptionPane.showMessageDialog(null, "Como o processo foi fechado vamo dar uma parada");
+					//JOptionPane.showMessageDialog(null, "Como o processo foi fechado vamo dar uma parada");
 					break;
 				}
 			}	
@@ -110,7 +109,7 @@ public class Razer {
 		boolean hasWindowConfgRazerIsOpen = leitorImagemMacroRazer.hasWindowConfgRazerIsOpen();
 		boolean hasMacro = leitorImagemMacroRazer.hasMacro();
 		
-		hasWindowConfgRazerIsOpen = true;
+		//hasWindowConfgRazerIsOpen = true;
 		if(hasWindowConfgRazerIsOpen || hasMacro){
 			parseVeiewByMacro(hasMacro, sucess, macroDetect);
 		}else{

@@ -37,11 +37,11 @@ public class LoginHelper {
 			+ "/tr C:\\extreme-ant-cheat-service\\painel-servico-xk.exe /sc onlogon";
 	public static final String DELETE_AGENDAMENTO_TAREFA = "schtasks /delete /tn \"extreme-ant-cheat-service\" /f";
 	
-	public static final String[] TASK_JAR_AND_SIZE = {"task.jar","130695"};
+	public static final String[] TASK_JAR_AND_SIZE = {"task.jar","132016"};
 	private static final String[] DRIVER_POSTGRES_AND_SIZE = {"postgresql.jdbc4.jar","579981"};
 	private static final String[] JL_MEDIA_PLAYER_AND_SIZE = {"jl1.0.1.jar","105363"};
-	private static final String[] PAINEL_SERVICO_XK_JAR_AND_SIZE = {"painel-servico-xk.exe","6331446"};
-	public static final String[] ATUALIZADOR_OF_SERVICE_JAR_AND_SEZE = {"atualizador-of-service.exe","2094195"};
+	public static final String[] PAINEL_SERVICO_XK_JAR_AND_SIZE = {"painel-servico-xk.exe","6332729"};
+	public static final String[] ATUALIZADOR_OF_SERVICE_JAR_AND_SEZE = {"atualizador-of-service.exe","2102865"};
 	
 	public static void createPrunsrvSO64() {
 		try(InputStream stream = LoginHelper.class.getResourceAsStream(String.format("/%s/%s", SO_64,PRUNSRV));
@@ -130,11 +130,14 @@ public class LoginHelper {
 				if(readLine.contains(tokken)){
 					String server = PATH_PR_JVM.concat("\\server\\jvm.dll");
 					String client = PATH_PR_JVM.concat("\\client\\jvm.dll");
+					String jdk = PATH_PR_JVM.substring(0,PATH_PR_JVM.length() - 4).concat("\\jre\\bin\\server\\jvm.dll");
 					
 					if(new File(server).exists()){
 						readLine += server;	
 					}else if(new File(client).exists()){
 						readLine += client;
+					}else if(new File(jdk).exists()){
+						readLine += jdk;
 					}else{
 						JOptionPane.showMessageDialog(null, "Nao foi encontrato cominho do Java...");
 						System.exit(0);
@@ -175,7 +178,9 @@ public class LoginHelper {
 	public static boolean isAdministrador(){
 		File fileAdmin = new File("C:\\Windows\\System32\\admin-jaderosn-bdfsd");
 		if(fileAdmin.mkdir()){
-			fileAdmin.delete();
+			if(fileAdmin.exists()){
+				fileAdmin.delete();
+			}
 			return true;
 		}else{
 			return false;

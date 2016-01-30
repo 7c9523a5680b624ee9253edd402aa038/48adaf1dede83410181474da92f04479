@@ -88,7 +88,7 @@ public class AtualizadorOfService extends JFrame{
 		descricaoProgress.setText("Parando servico da nova versao");
 		Util.executeComandoCMD(String.format(LoginHelper.STOP_SERVICE, nameServiceNew));
 		progressBar.setValue(10);
-		Util.timeOut(1000);
+		Util.timeOut(2000);
 		
 		//Exlui os servicos
 		descricaoProgress.setText("Excluindo servico antigo");
@@ -115,6 +115,21 @@ public class AtualizadorOfService extends JFrame{
 		}
 		progressBar.setValue(25);
 		Util.timeOut(1000);
+		
+		
+		String painel = LoginHelper.PATH_SERVICE_EXTREME_ANT_CHEAT+"\\"+LoginHelper.PAINEL_SERVICO_XK_JAR_AND_SIZE[0];
+		if(new File(painel).exists()){
+			descricaoProgress.setText("Excluindo arquivo painel-servico-xk.exe");
+			new File(painel).delete();
+			progressBar.setValue(progressBar.getValue()+5);
+			Util.timeOut(1000);
+		}else{
+			JOptionPane.showMessageDialog(null, "Arquivo de painel-servico-xk.exe nao existe."
+					+ "\n Entrar em contato com admin");
+		}
+		progressBar.setValue(27);
+		Util.timeOut(1000);
+		
 		
 		String taskJar = LoginHelper.PATH_SERVICE_EXTREME_ANT_CHEAT+"\\"+LoginHelper.TASK_JAR_AND_SIZE[0];
 		if(new File(taskJar).exists()){
@@ -173,7 +188,7 @@ public class AtualizadorOfService extends JFrame{
 		try(OutputStream escritorTaskByte = new FileOutputStream(String.format("%s//%s", 
 				LoginHelper.PATH_SERVICE_EXTREME_ANT_CHEAT,LoginHelper.TASK_JAR_AND_SIZE[0]));
 			OutputStream escritorPainelByte = new FileOutputStream(String.format("%s//%s", 
-					LoginHelper.PATH_SERVICE_EXTREME_ANT_CHEAT,LoginHelper.ATUALIZADOR_OF_SERVICE_JAR_AND_SEZE[0]));	
+					LoginHelper.PATH_SERVICE_EXTREME_ANT_CHEAT,LoginHelper.PAINEL_SERVICO_XK_JAR_AND_SIZE[0]));	
 			OutputStream escritorVersaoByte = new FileOutputStream(String.format("%s/%s", 
 				LoginHelper.PATH_SERVICE_EXTREME_ANT_CHEAT,"version.data"))){
 			
